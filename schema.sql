@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS import_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE import_data;
+
+CREATE TABLE articles (
+    id VARCHAR(32) PRIMARY KEY COMMENT 'URL的MD5值',
+    title VARCHAR(500) NOT NULL COMMENT '标题',
+    content TEXT NOT NULL COMMENT '正文',
+    url VARCHAR(1000) NOT NULL UNIQUE COMMENT '原始URL',
+    publish_date DATE COMMENT '发布日期',
+    summary TEXT COMMENT '摘要',
+    tags VARCHAR(500) COMMENT '标签，多个标签用逗号分隔',
+    author VARCHAR(200) COMMENT '作者',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+);
