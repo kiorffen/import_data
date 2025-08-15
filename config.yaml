@@ -3,8 +3,8 @@ server:
   auth_token: your_secret_key_here
 
 database:
-  host: nps.tanghaiyu.com
-  port: 8037
+  host: 127.0.01
+  port: 3037
   username: root
-  password: haiyu198977
+  password: 123456
   database: import_data
