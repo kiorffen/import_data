@@ -11,7 +11,10 @@ func CreateArticle(c *gin.Context) {
 	var article models.Article
 
 	if err := c.ShouldBindJSON(&article); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusCreated, gin.H{
+			"message": err.Error(),
+			"id":      article.ID,
+		})
 		return
 	}
 
@@ -23,7 +26,10 @@ func CreateArticle(c *gin.Context) {
 			})
 			return
 		}
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save article"})
+		c.JSON(http.StatusCreated, gin.H{
+			"message": "Failed to save Article",
+			"id":      article.ID,
+		})
 		return
 	}
 
